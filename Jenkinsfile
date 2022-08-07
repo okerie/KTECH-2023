@@ -4,7 +4,7 @@ pipeline {
      maven 'M2_HOME'
   }
   environment {
-     registry = "atabonglefac/devops_pipeline"
+     registry = "atabonglefac/darinpope-dockerhub"
      registryCredential = 'darinpope-dockerhub'
   }
   stages {
@@ -28,18 +28,5 @@ pipeline {
       }
      }
    }
-    stage('Login') {
-      steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
-    }
-    stage('Push') {
-      steps {
-        script {  
-        sh docker.push  registry + ":$BUILD_NUMBER"
-      }
-    }
-   }
   }
- }
 }
