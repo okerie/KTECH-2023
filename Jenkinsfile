@@ -35,9 +35,11 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push  registry + ":$BUILD_NUMBER"
+        script {  
+        sh docker.push  registry + ":$BUILD_NUMBER"
       }
     }
    }
   }
+ }
 }
